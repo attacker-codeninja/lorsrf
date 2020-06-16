@@ -40,12 +40,7 @@ print('''
 \t{yellow}{bold}# Coded By : Khaled Nassar @knassar702
 {end}
 	'''.format(red=red,bold=bold,yellow=yellow,end=end))
-
-if len(sys.argv) < 3:
-	print(f'Usage : {sys.argv[0]} HOST PORT')
-else:
-	host = sys.argv[1]
-	port = int(sys.argv[2])
+port = int(sys.argv[1])
 
 app = Flask(__name__)
 
@@ -59,4 +54,4 @@ def index(param):
 		print(request.headers)
 	return 'okie'
 if __name__ == '__main__':
-	app.run(host=host,port=port)
+	app.run(port=port)
