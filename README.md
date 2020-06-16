@@ -7,7 +7,7 @@ SSRF parameter bruteforce tool
 ```bash
 ➜  git clone https://github.com/knassar702/lorsrf
 ➜  cd lorsrf
-➜  sudo pip3 install requests
+➜  sudo pip3 install requests flask
 ```
 * install <a href='https://www.youtube.com/watch?v=4sF1ATYwr3U'>ngrok tool </a>
 
