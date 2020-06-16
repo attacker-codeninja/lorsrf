@@ -3,6 +3,7 @@
 from threading import Thread
 from queue import Queue
 from optparse import OptionParser
+from urllib.parse import urlparse
 import requests,sys,os,platform
 
 colors = True  # Output should be colored
@@ -110,7 +111,8 @@ else:
 def req(link,cookie=None,redirect=None,timeout=None):
 	try:
 		r = requests.get(link,verify=False,allow_redirects=redirect,timeout=timeout,cookies=cookie)
-		r2 = requests.post(link,verify=False,allow_redirects=redirect,timeout=timeout,cookies=cookie)
+		o = urlparse(link)
+		r2 = requests.post(link.split('?')[0],verify=False,allow_redirects=redirect,timeout=timeout,cookies=cookie,data=post_data(o.query))
 	finally:
 		pass
 q = Queue()
