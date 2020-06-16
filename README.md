@@ -1,7 +1,5 @@
 # lorsrf
-SSRF parameter bruteforce tool
-
-
+Bruteforcing on Hidden parameters to find SSRF vulnerability using `GET` and `POST` Methods
 ## install
 * download it 
 ```bash
