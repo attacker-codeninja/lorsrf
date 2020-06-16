@@ -18,7 +18,7 @@ SSRF parameter bruteforce tool
 `python3 server.py 9090`
 * run `lorsrf.py` and add ngrok host using `-s` option
 
-## Options :
+## How can i use it .? 
 
 `cat YOUR_LIST.txt | python3 lorsrf.py -t URL_TARGET -s YOUR_HOST`
   ## Examples :
