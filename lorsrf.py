@@ -3,8 +3,35 @@
 from threading import Thread
 from queue import Queue
 from optparse import OptionParser
-import requests,sys
+import requests,sys,os,platform
 
+colors = True  # Output should be colored
+machine = sys.platform  # Detecting the os of current system
+checkplatform = platform.platform() # Get current version of OS
+if machine.lower().startswith(('os', 'win', 'darwin', 'ios')):
+    colors = False  # Colors shouldn't be displayed in mac & windows
+if checkplatform.startswith("Windows-10") and int(platform.version().split(".")[2]) >= 10586:
+    colors = True
+    os.system('')   # Enables the ANSI
+if not colors:
+    end = red = white = green = yellow = run = bad = good = bold = info = que = ''
+else:
+    white = '\033[97m'
+    green = '\033[92m'
+    red = '\033[91m'
+    yellow = '\033[93m'
+    end = '\033[0m'
+    back = '\033[7;91m'
+    bold = '\033[1m'
+    blue = '\033[94m'
+    info = '\033[93m[!]\033[0m'
+    que = '\033[94m[?]\033[0m'
+    bad = '\033[91m[-]\033[0m'
+    good = '\033[92m[+]\033[0m'
+    run = '\033[97m[~]\033[0m'
+    grey = '\033[7;90m'
+    cyan='\u001B[36m'
+    gray = '\033[90m'
 
 requests.packages.urllib3.disable_warnings()
 
@@ -18,7 +45,16 @@ def post_data(params):
         return postData
     return {}
 
-
+print('''
+{red}{bold}
+\t _            ___      __ 
+\t| |   ___ _ _/ __|_ _ / _|
+\t| |__/ _ \ '_\__ \ '_|  _|
+\t|____\___/_| |___/_| |_|  
+\t
+\t{yellow}{bold}# Coded By : Khaled Nassar @knassar702
+{end}
+	'''.format(red=red,bold=bold,yellow=yellow,end=end))
 optp = OptionParser(add_help_option=False)
 optp.add_option('-t',dest='target')
 optp.add_option('-h','--help',dest='help',action='store_true')
@@ -31,7 +67,8 @@ opts, args = optp.parse_args()
 helper = f"""
 Options:
 	-h         | show help message and exit
-	-s         | your server host
+	-t         | your target
+	-s         | your host
 	-c         | add cookies
 	-r         | allow redirects
 	--threads  | add threads
