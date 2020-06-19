@@ -64,10 +64,12 @@ optp.add_option('-c','--cookies',dest='cookies')
 optp.add_option('--timeout',dest='timeout',type='int')
 optp.add_option('-r','--allow_redirects',dest='redirect',action='store_true')
 optp.add_option('--threads',dest='threads',type='int')
+optp.add_option('-w',dest='wordlist')
 opts, args = optp.parse_args()
 helper = f"""
 Options:
 	-h         | show help message and exit
+	-w         | add your wordlist
 	-t         | your target
 	-s         | your host
 	-c         | add cookies
@@ -81,6 +83,15 @@ Example:
 if opts.help:
 	print(helper)
 	sys.exit()
+if opts.wordlist:
+	wordlist = opts.wordlist
+	try:
+		f = open(wordlist,'r')
+	except Exception as e:
+		print(e)
+		sys.exit()
+else:
+	wordlist = None
 if opts.threads:
 	thr = opts.threads
 else:
@@ -128,7 +139,12 @@ if __name__ == '__main__':
 		p1 = Thread(target=threader)
 		p1.daemon = True
 		p1.start()
-	for parameter in sys.stdin:
-		parameter = parameter.rstrip()
-		q.put(f'{link}?{parameter}={host}/{parameter}')
+	if wordlist:
+		for parameter in f:
+			parameter = parameter.rstrip()
+			q.put(f'{link}?{parameter}={host}/{parameter}')
+	else:
+		for parameter in sys.stdin:
+			parameter = parameter.rstrip()
+			q.put(f'{link}?{parameter}={host}/{parameter}')
 	q.join()
