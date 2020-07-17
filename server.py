@@ -47,10 +47,10 @@ app = Flask(__name__)
 @app.route('/<param>',methods=['GET','POST'])
 def index(param):
 	if request.method == 'POST':
-		print(f'[ {param} ]')
+		print(f'POST [ {param} ]')
 		print(request.headers)
 	else:
-		print(f'[ {param} ]')
+		print(f'GET [ {param} ]')
 		print(request.headers)
 	return 'okie'
 if __name__ == '__main__':
