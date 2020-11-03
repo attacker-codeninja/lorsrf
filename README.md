@@ -21,7 +21,7 @@ Bruteforcing on Hidden parameters to find SSRF vulnerability using `GET` and `PO
 * copy your host and add it by using `-s` option (without `server.py` file)
 ## How can i use it .? 
 
-`cat YOUR_LIST.txt | python3 lorsrf.py -t URL_TARGET -s YOUR_HOST`
+`cat YOUR_LIST.txt | python3 lorsrf.py -t URL_TARGET -s YOUR_HOST -w wordlist.txt`
   ## Examples :
 ```bash
 $ cat paramters.txt | python3 lorsrf.py -t http://target.com -s http://53252.ngrok.io
