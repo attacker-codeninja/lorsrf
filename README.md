@@ -10,12 +10,15 @@ Bruteforcing on Hidden parameters to find SSRF vulnerability using `GET` and `PO
 * install <a href='https://www.youtube.com/watch?v=4sF1ATYwr3U'>ngrok tool </a>
 
 ## Steps :
+### Ngrok
 * run your ngrok
 ` ./ngrok http 9090`
 * run `server.py` script and add ngrok port
 `python3 server.py 9090`
 * run `lorsrf.py` and add ngrok host using `-s` option
-
+### requestbin.com
+* login to https://requestbin.com
+* copy your host and add it by using `-s` option (without `server.py` file)
 ## How can i use it .? 
 
 `cat YOUR_LIST.txt | python3 lorsrf.py -t URL_TARGET -s YOUR_HOST`
