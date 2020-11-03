@@ -40,5 +40,10 @@ $ cat paramters.txt | python3 lorsrf.py -t http://target.com -s http://53252.ngr
 $ cat paramters.txt | python3 lorsrf.py -t http://target.com -s http://53252.ngrok.io -r
 ```
 
+
+## Testing
+```python3
+python3 lorsrf.py -t 'http://testphp.vulnweb.com/showimage.php' -s 'https://YOUR_HOST.com' -w parameters.txt
+```
 ## GIF
 <img src='src/lorsrf.gif'>
