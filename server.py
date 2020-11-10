@@ -40,8 +40,11 @@ print('''
 \t{yellow}{bold}# Coded By : Khaled Nassar @knassar702
 {end}
 	'''.format(red=red,bold=bold,yellow=yellow,end=end))
-port = int(sys.argv[1])
-
+try:
+	port = int(sys.argv[2])
+	host = sys.argv[1]
+except:
+	print('ERROR . python server localhost 9803')
 app = Flask(__name__)
 
 @app.route('/<param>',methods=['GET','POST'])
@@ -54,4 +57,4 @@ def index(param):
 		print(request.headers)
 	return 'okie'
 if __name__ == '__main__':
-	app.run(port=port)
+	app.run(host=host,port=port)
